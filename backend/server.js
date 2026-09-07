@@ -3,10 +3,13 @@ const cors = require ("cors");
 require("dotenv").config();
 
 
+
 const app=express();
 const connectDB=require("./config/db");
 
-const medicineRoutes=require("./routes/medicineRoutes")
+const medicineRoutes=require("./routes/medicineRoutes");
+const batchRoutes=require("./routes/batchRoutes");
+const supplierRoutes = require("./routes/supplierRoutes");
 
 app.use(express.json());
 app.use(cors());
@@ -20,6 +23,9 @@ app.get("/",(req,res)=>{
 });
 
 app.use("/api/medicines",medicineRoutes)
+app.use("/api/batches",batchRoutes)
+app.use("/api/suppliers",supplierRoutes);
+
 
 const PORT= process.env.PORT || 5000;
 app.listen(PORT,()=>{

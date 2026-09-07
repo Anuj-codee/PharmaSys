@@ -37,4 +37,4 @@ const medicineSchema=new mongoose.Schema({
     timestamps:true,
 });
 
-module.exports=mongoose.model("medicine",medicineSchema);
+module.exports=mongoose.model("Medicine",medicineSchema);
