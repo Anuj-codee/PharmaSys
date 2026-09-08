@@ -35,10 +35,10 @@ const purchaseItemSchema = new mongoose.Schema({
         min: 0
     }
 });
-const PurchaseSchema = new mongoose.Schema({
+const purchaseSchema = new mongoose.Schema({
     supplier: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "supplier",
+        ref: "Supplier",
         required: true,
     },
     invoiceNumber: {
@@ -69,3 +69,4 @@ const PurchaseSchema = new mongoose.Schema({
 },{
     timestamps: true,
 });
+module.exports = mongoose.model("Purchase", purchaseSchema);

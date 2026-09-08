@@ -10,6 +10,7 @@ const connectDB=require("./config/db");
 const medicineRoutes=require("./routes/medicineRoutes");
 const batchRoutes=require("./routes/batchRoutes");
 const supplierRoutes = require("./routes/supplierRoutes");
+const purchaseRoutes = require("./routes/purchaseRoutes");
 
 app.use(express.json());
 app.use(cors());
@@ -25,6 +26,7 @@ app.get("/",(req,res)=>{
 app.use("/api/medicines",medicineRoutes)
 app.use("/api/batches",batchRoutes)
 app.use("/api/suppliers",supplierRoutes);
+app.use("/api/purchase",purchaseRoutes);
 
 
 const PORT= process.env.PORT || 5000;
