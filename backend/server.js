@@ -11,6 +11,7 @@ const medicineRoutes=require("./routes/medicineRoutes");
 const batchRoutes=require("./routes/batchRoutes");
 const supplierRoutes = require("./routes/supplierRoutes");
 const purchaseRoutes = require("./routes/purchaseRoutes");
+const inventoryRoutes = require("./routes/inventoryRoutes")
 
 app.use(express.json());
 app.use(cors());
@@ -27,9 +28,10 @@ app.use("/api/medicines",medicineRoutes)
 app.use("/api/batches",batchRoutes)
 app.use("/api/suppliers",supplierRoutes);
 app.use("/api/purchase",purchaseRoutes);
+app.use("/api/inventory",inventoryRoutes);
 
 
-const PORT= process.env.PORT || 5000;
+const PORT= process.env.PORT || 5000 ;
 app.listen(PORT,()=>{
     console.log(`Server is running on port http://localhost:${PORT}`);
 
