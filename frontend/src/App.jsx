@@ -3,6 +3,7 @@ import Medicines from './pages/Medicines'
 import MedicineForm from './pages/MedicineForm'
 import Home from './pages/Home'
 import Dashboard from './pages/Dashboard'
+import Inventory from './pages/Inventory'
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/medicines/add" element={<MedicineForm />} />
         <Route path="/medicines/:id/edit" element={<MedicineForm />} />
         <Route path="/addmedicine" element={<MedicineForm />} />
+        <Route path="/inventory" element={<Inventory />} />
       </Routes>
     </BrowserRouter>
   )

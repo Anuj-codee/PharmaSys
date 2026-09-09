@@ -9,7 +9,7 @@ const Navbar = () => {
     const isActive = (path) => location.pathname === path;
 
     const navLinks = [
-        { name: 'Dashboard', path: '/' },
+        { name: 'Dashboard', path: '/inventory' },
         { name: 'Medicines', path: '/medicines' },
         { name: 'Billing', path: '/billing' },
         { name: 'Suppliers', path: '/suppliers' },
@@ -19,7 +19,7 @@ const Navbar = () => {
     return (
         <nav className="bg-[#006179] text-white shadow-md font-sans sticky top-0 z-50">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center h-16">
+                <div className="flex min-h-16 items-center justify-between py-3">
                     
                     {/* Logo Section */}
                     <div className="shrink-0 flex items-center gap-2">
@@ -33,7 +33,7 @@ const Navbar = () => {
                     </div>
 
                     {/* Desktop Menu */}
-                    <div className="hidden md:flex space-x-8 items-center">
+                    <div className="hidden items-center gap-7 md:flex">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.name}

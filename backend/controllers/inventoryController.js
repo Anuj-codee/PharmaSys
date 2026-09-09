@@ -38,3 +38,26 @@ exports.getInventory = async (req, res) => {
         });
     }
 };
+
+exports.getMedicineStock= async(req,res)=>{
+    try{
+        const batches = await Batch.find({
+            medicine: req.params.medicineId
+        });
+        const totalQuantity=batches.reduce(
+            (total,batch)=>total+batch.quantity,
+            0
+        );
+        res.status(200).json({
+            medicine: req.params.medicineId,
+            totalQuantity,
+            batches
+        });
+    }
+    catch(error){
+        return res.status(500).json({
+            message: "Failed to calculate stock",
+            error: error.message
+        })
+    }
+}
