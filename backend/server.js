@@ -12,6 +12,7 @@ const batchRoutes=require("./routes/batchRoutes");
 const supplierRoutes = require("./routes/supplierRoutes");
 const purchaseRoutes = require("./routes/purchaseRoutes");
 const inventoryRoutes = require("./routes/inventoryRoutes")
+const stockMovementRoutes = require("./routes/stockMovementRoutes")
 
 app.use(express.json());
 app.use(cors());
@@ -29,6 +30,7 @@ app.use("/api/batches",batchRoutes)
 app.use("/api/suppliers",supplierRoutes);
 app.use("/api/purchase",purchaseRoutes);
 app.use("/api/inventory",inventoryRoutes);
+app.use("/api/stockMovements",stockMovementRoutes);
 
 
 const PORT= process.env.PORT || 5000 ;

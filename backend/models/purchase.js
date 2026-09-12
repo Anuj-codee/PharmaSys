@@ -44,7 +44,8 @@ const purchaseSchema = new mongoose.Schema({
     invoiceNumber: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
+        unique: true,
     },
 
     purchaseDate: {

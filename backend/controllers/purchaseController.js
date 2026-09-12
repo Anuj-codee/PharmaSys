@@ -2,6 +2,7 @@ const Purchase = require("../models/purchase");
 const Supplier = require("../models/supplier");
 const Medicine = require("../models/medicine");
 const Batch = require("../models/batch");
+const stockMovement = require("../models/stockMovement")
 
 exports.createPurchase = async (req, res) => {
     try {
@@ -55,15 +56,17 @@ exports.createPurchase = async (req, res) => {
                 batchNumber: item.batchNumber
             });
 
-            if (existingBatch) {
+            let batch;
+            if(existingBatch) {
 
                 existingBatch.quantity += item.quantity;
-
                 await existingBatch.save();
+                batch = existingBatch;
+
 
             } else {
 
-                await Batch.create({
+                batch = await Batch.create({
                     medicine: item.medicine,
                     batchNumber: item.batchNumber,
                     expiryDate: item.expiryDate,
@@ -73,6 +76,14 @@ exports.createPurchase = async (req, res) => {
                 });
 
             }
+            await stockMovement.create({
+                medicine: item.medicine,
+                batch: batch._id,
+                type: "PURCHASE",
+                quantity: item.quantity,
+                refernceId: purchase._id,
+                note: `Purchase invoice ${invoiceNumber}`
+            });
         }
 
         res.status(201).json(purchase);
@@ -105,29 +116,29 @@ exports.getPurchases = async (req, res) => {
 
 // Get one purchase
 exports.getPurchase = async (req, res) => {
-  try {
-    const purchase = await Purchase.findById(req.params.id)
-      .populate("supplier", "name phone")
-      .populate(
-        "items.medicine",
-        "name genericName"
-      );
+    try {
+        const purchase = await Purchase.findById(req.params.id)
+            .populate("supplier", "name phone")
+            .populate(
+                "items.medicine",
+                "name genericName"
+            );
 
-    if (!purchase) {
-      return res.status(404).json({
-        message: "Purchase not found"
-      });
+        if (!purchase) {
+            return res.status(404).json({
+                message: "Purchase not found"
+            });
+        }
+
+        res.status(200).json(purchase);
+
+    } catch (error) {
+
+        res.status(500).json({
+            message: "Failed to fetch purchase",
+            error: error.message
+        });
     }
-
-    res.status(200).json(purchase);
-
-  } catch (error) {
-
-    res.status(500).json({
-      message: "Failed to fetch purchase",
-      error: error.message
-    });
-  }
 };
 
 
