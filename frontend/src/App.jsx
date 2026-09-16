@@ -4,6 +4,7 @@ import MedicineForm from './pages/MedicineForm'
 import Home from './pages/Home'
 import Dashboard from './pages/Dashboard'
 import Inventory from './pages/Inventory'
+import Sales from './pages/Sales'
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/medicines/:id/edit" element={<MedicineForm />} />
         <Route path="/addmedicine" element={<MedicineForm />} />
         <Route path="/inventory" element={<Inventory />} />
+        <Route path="/sales" element={<Sales />} />
       </Routes>
     </BrowserRouter>
   )

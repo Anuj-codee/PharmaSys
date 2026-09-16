@@ -1,7 +1,11 @@
 import axios from 'axios';
 
+const defaultApiUrl = import.meta.env.DEV
+  ? 'http://localhost:5000/api'
+  : 'https://pharmasys-cqzl.onrender.com/api';
+
 const api = axios.create({
-  baseURL: 'https://pharmasys-cqzl.onrender.com/api' || 'http://localhost:5000/api', // Replace with your API base URL
+  baseURL: import.meta.env.VITE_API_URL || defaultApiUrl,
   headers: {
     'Content-Type': 'application/json',
   },

@@ -29,7 +29,7 @@ const medicineSchema=new mongoose.Schema({
         default: 10,
         min: [0,"Reorder level is required"]
     },
-    prescriptionRequsired:{
+    prescriptionRequired:{
         type: Boolean,
         default: false,
     },
