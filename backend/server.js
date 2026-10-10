@@ -14,6 +14,7 @@ const purchaseRoutes = require("./routes/purchaseRoutes");
 const inventoryRoutes = require("./routes/inventoryRoutes")
 const stockMovementRoutes = require("./routes/stockMovementRoutes")
 const saleRoutes = require("./routes/saleRoutes")
+const dashBoardRoutes= require("./routes/dashBoardRoutes")
 
 app.use(express.json());
 app.use(cors());
@@ -33,10 +34,10 @@ app.use("/api/purchase",purchaseRoutes);
 app.use("/api/inventory",inventoryRoutes);
 app.use("/api/stockMovements",stockMovementRoutes);
 app.use("/api/sales",saleRoutes);
+app.use("/api/dashBoard",dashBoardRoutes);
 
 
 const PORT= process.env.PORT || 5000 ;
 app.listen(PORT,()=>{
     console.log(`Server is running on port http://localhost:${PORT}`);
-
 });
