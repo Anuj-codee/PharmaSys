@@ -7,6 +7,7 @@ import Inventory from './pages/Inventory'
 import Sales from './pages/Sales'
 
 
+
 function App() {
   return (
     <BrowserRouter>
